@@ -20,7 +20,7 @@
   };
 
   home.packages =
-    (with pkgs-stable; [emacs-lsp-booster])
+    (with pkgs-stable; [emacs-lsp-booster eza])
     ++ (with pkgs; [
       # ai
       ollama
@@ -43,7 +43,6 @@
       fzf
       jq
       yq-go
-      eza
       comma
       zellij
       nix-search-cli
