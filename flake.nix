@@ -21,6 +21,8 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    linyinfeng.url = "github:linyinfeng/nur-packages";
   };
 
   outputs = {
@@ -28,6 +30,7 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
+    linyinfeng
   }: let
     # pkgs-stable-func = system: nixpkgs-stable.legacyPackages."${system}";
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
@@ -37,6 +40,9 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/blade-desktop
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [linyinfeng.overlays.singleRepoNur];
+          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
-
-{
-  imports = [./common.nix];
+{pkgs, ...}: {
+  imports = [
+    ./fcitx5
+    ./common.nix
+  ];
   home.username = "yucheng";
   home.homeDirectory = "/home/yucheng";
 
