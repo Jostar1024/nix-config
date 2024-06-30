@@ -22,6 +22,8 @@
 
   # AMD GPU
   boot.initrd.kernelModules = ["amdgpu"];
+  programs.steam.enable = true;
+
   networking.hostName = "blade-desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

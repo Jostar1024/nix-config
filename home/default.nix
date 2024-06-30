@@ -26,7 +26,6 @@
     emacs29-pgtk
     atuin
     anki
-    steam
     librime
 
     gnumake
