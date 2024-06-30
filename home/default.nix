@@ -26,6 +26,15 @@
     emacs29-pgtk
     atuin
     anki
+    steam
+    librime
+
+    gnumake
+    gcc9
+
+    # application
+    telegram-desktop
+    logseq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

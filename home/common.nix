@@ -47,6 +47,7 @@
       zellij
       nix-search-cli
       manix
+      nix-index
 
       # programming
       alejandra
