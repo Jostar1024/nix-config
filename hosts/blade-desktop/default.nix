@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../desktops/gnome.nix
   ];
   nix.settings.trusted-users = ["yucheng"];
 
@@ -86,6 +87,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # NOTE: for logseq
+  nixpkgs.config.permittedInsecurePackages = ["electron-28.3.3"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
