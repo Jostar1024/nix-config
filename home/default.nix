@@ -2,6 +2,7 @@
   imports = [
     ./fcitx5
     ./common.nix
+    ./programs/dropbox.nix
   ];
   home.username = "yucheng";
   home.homeDirectory = "/home/yucheng";
