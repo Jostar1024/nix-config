@@ -48,6 +48,7 @@
       nix-search-cli
       manix
       nix-index
+      just
 
       # programming
       alejandra
