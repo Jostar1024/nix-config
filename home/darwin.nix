@@ -15,4 +15,6 @@
     raycast
     stats
   ];
+
+  programs.home-manager.enable = true;
 }
