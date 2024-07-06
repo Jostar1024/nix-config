@@ -53,5 +53,17 @@
         ];
       };
     };
+
+    homeConfigurations."yuchengcao" = let
+      pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
+    in
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          ./home/darwin.nix
+          ./home/common.nix
+        ];
+        extraSpecialArgs = {inherit pkgs-stable;};
+      };
   };
 }
