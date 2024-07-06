@@ -26,6 +26,8 @@
   # Enable xbox wireless controller adapter
   hardware.xone.enable = true;
 
+  programs.adb.enable = true;
+
   networking.hostName = "blade-desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -81,7 +83,7 @@
   users.users.yucheng = {
     isNormalUser = true;
     description = "yucheng";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
       furmark
       #  thunderbird
