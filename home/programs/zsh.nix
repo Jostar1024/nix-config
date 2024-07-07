@@ -22,7 +22,7 @@
       ls = "eza";
       l = "eza -lh";
       la = "eza -la";
-      hms = "home-manager switch";
+      hms = "just -f ~/nix-config/justfile deploy-mac-home";
       tn = "tmux new-session -A -s";
       ta = "tmux attach -t";
       k = "kubectl";
