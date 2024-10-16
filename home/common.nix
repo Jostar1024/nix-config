@@ -49,6 +49,7 @@
       manix
       nix-index
       just
+      android-tools
 
       # programming
       alejandra
@@ -90,6 +91,7 @@
       alacritty
       syncthing
       keepassxc
+      zathura
 
       # fonts
       jetbrains-mono

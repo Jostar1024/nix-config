@@ -14,6 +14,7 @@
     rectangle
     raycast
     stats
+    pgcli
   ];
 
   programs.home-manager.enable = true;
