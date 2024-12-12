@@ -15,6 +15,7 @@
     raycast
     stats
     pgcli
+    postgresql_17_jit
   ];
 
   programs.home-manager.enable = true;

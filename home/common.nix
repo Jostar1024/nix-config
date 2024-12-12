@@ -50,6 +50,7 @@
       nix-index
       just
       android-tools
+      graphviz
 
       # programming
       alejandra
@@ -70,6 +71,7 @@
       nixfmt-classic
       racket
       pandoc
+      texliveFull
       haskellPackages.lsp
       haskellPackages.hoogle
       haskellPackages.cabal-install
@@ -92,6 +94,7 @@
       syncthing
       keepassxc
       zathura
+      sioyek
 
       # fonts
       jetbrains-mono
