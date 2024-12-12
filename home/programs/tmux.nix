@@ -29,7 +29,7 @@ in {
       bind-key r source-file ~/.config/tmux/tmux.conf \; display-message "tmux.conf reloaded."
 
       # https://www.reddit.com/r/tmux/comments/sv6skh/clickable_urls/
-      bind-key i run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | fzf-tmux -d20 --multi --bind alt-a:select-all,alt-d:deselect-all | xargs open"
+      bind-key i run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | sort -ui | fzf-tmux -p '80%' --reverse --prompt \"URL> \" | xargs open"
 
       set -g @fuzzback-popup 1
       set -g @fuzzback-hide-preview 1
