@@ -20,7 +20,7 @@
   };
 
   home.packages =
-    (with pkgs-stable; [emacs-lsp-booster eza])
+    (with pkgs-stable; [emacs-lsp-booster eza elixir-ls])
     ++ (with pkgs; [
       # ai
       ollama
@@ -51,12 +51,13 @@
       just
       android-tools
       graphviz
+      janet
+      jpm
 
       # programming
       alejandra
       nil
       asdf-vm
-      elixir-ls
       terraform
       clj-kondo
       cljfmt
@@ -75,6 +76,7 @@
       haskellPackages.lsp
       haskellPackages.hoogle
       haskellPackages.cabal-install
+      buf
 
       podman-compose
       # erlang deps

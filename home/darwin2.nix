@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  home.username = "yuchengcao";
-  home.homeDirectory = "/Users/yuchengcao";
+  home.username = "yucheng";
+  home.homeDirectory = "/Users/yucheng";
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
     emacs

@@ -65,5 +65,17 @@
         ];
         extraSpecialArgs = {inherit pkgs-stable;};
       };
+
+    homeConfigurations."yucheng" = let
+      pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
+    in
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          ./home/darwin2.nix
+          ./home/common.nix
+        ];
+        extraSpecialArgs = {inherit pkgs-stable;};
+      };
   };
 }
