@@ -12,6 +12,7 @@
     sessionVariables = {
       EDITOR = "emacs";
       LANG = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
     };
     localVariables = {
       KERL_BUILD_DOCS = "yes";
