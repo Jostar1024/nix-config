@@ -28,10 +28,12 @@
 
     casks = [
       "aerospace"
+      "anki"
       "chromium"
       "firefox"
       "ghostty"
       "logi-options+"
+      "logseq"
       "raycast"
       "squirrel"
       "syncthing"
