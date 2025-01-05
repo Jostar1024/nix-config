@@ -20,7 +20,7 @@
   };
 
   home.packages =
-    (with pkgs-stable; [emacs-lsp-booster eza elixir-ls])
+    (with pkgs-stable; [emacs-lsp-booster elixir-ls])
     ++ (with pkgs; [
       # ai
       ollama
@@ -53,6 +53,7 @@
       graphviz
       janet
       jpm
+      eza
 
       # programming
       alejandra
