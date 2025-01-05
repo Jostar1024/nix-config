@@ -1,29 +1,49 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  programs.less = {
-    enable = true;
-    keys = "
+{...}: {
+  programs = {
+    less = {
+      enable = true;
+      keys = "
       h left-scroll
       l right-scroll
     ";
-  };
+    };
 
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-    nix-direnv.enable = true;
-  };
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    eza = {
+      enable = true;
+      git = true;
+      icons = true;
+      enableZshIntegration = true;
+    };
+
+    yazi = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        manager = {
+          show_hidden = true;
+          sort_dir_first = true;
+        };
+      };
+    };
+    skim = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }

@@ -51,7 +51,7 @@
         # sets how long it takes before it starts repeating.
         InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
         # sets how fast it repeats once it starts.
-        KeyRepeat = 3; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
+        KeyRepeat = 2; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
 
         # NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         # NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
@@ -65,6 +65,18 @@
       # https://github.com/ryan4yin/nix-darwin-kickstarter/blob/main/rich-demo/modules/system.nix
       # settings not directly supported by nix-darwin
       # CustomUserPreferences = {...}
+      CustomUserPreferences = {
+        # https://github.com/LnL7/nix-darwin/issues/185
+        # https://github.com/ConstantinCezarBegu/nix/blob/4c86003720e0591891924e5a8d7e05a3519e5911/module/darwin/macos-keyboard-shortcuts-configuration.nix
+        # https://apple.stackexchange.com/questions/474904/what-does-each-part-in-com-apple-symbolichotkeys-plist-mean
+        # https://github.com/NUIKit/CGSInternal/blob/master/CGSHotKeys.h
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            # Open spotlight
+            "64" = {enabled = false;};
+          };
+        };
+      };
     };
     keyboard = {
       enableKeyMapping = true; # enable key mapping so that we can use `option` as `control`

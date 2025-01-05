@@ -53,7 +53,6 @@
       graphviz
       janet
       jpm
-      eza
 
       # programming
       alejandra

@@ -11,6 +11,9 @@
     darwin.iproute2mac
     raycast
     stats
+
+    alist
+
     # postgres
     pgcli
     postgresql_16
