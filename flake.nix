@@ -23,6 +23,14 @@
     };
 
     linyinfeng.url = "github:linyinfeng/nur-packages";
+
+    # nix-darwin's config
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
+
+    nix-darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
   };
 
   outputs = {
@@ -30,8 +38,12 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
-    linyinfeng
-  }: let
+    linyinfeng,
+    nixpkgs-darwin,
+    nix-darwin,
+  } @ inputs: let
+    inherit (inputs.nixpkgs) lib;
+    mylib = import ./lib {inherit lib;};
     # pkgs-stable-func = system: nixpkgs-stable.legacyPackages."${system}";
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
   in {
@@ -66,16 +78,24 @@
         extraSpecialArgs = {inherit pkgs-stable;};
       };
 
-    homeConfigurations."yucheng" = let
-      pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
-    in
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [
-          ./home/darwin2.nix
-          ./home/common.nix
-        ];
-        extraSpecialArgs = {inherit pkgs-stable;};
-      };
+    darwinConfigurations."set-theoretic-untyped" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./modules/nix-core.nix
+        ./hosts/darwin.nix
+        home-manager.darwinModules.home-manager
+        {
+          # https://github.com/nix-community/home-manager/issues/6036
+          users.users.yucheng.home = "/Users/yucheng";
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.yucheng = import ./home/darwin;
+          home-manager.extraSpecialArgs = {
+            inherit pkgs-stable;
+            inherit mylib;
+          };
+        }
+      ];
+    };
   };
 }

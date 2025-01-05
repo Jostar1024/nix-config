@@ -3,3 +3,6 @@ deploy:
 
 deploy-mac-home:
   home-manager switch --flake ~/nix-config
+
+deploy-mac:
+  darwin-rebuild switch --flake ~/nix-config
