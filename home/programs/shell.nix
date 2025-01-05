@@ -53,7 +53,7 @@
         Host *
           UseKeychain yes
           AddKeysToAgent yes
-          IdentityFile ~/.ssh/id_ed25519.pub
+          IdentityFile ~/.ssh/id_ed25519
       '';
     };
   };
