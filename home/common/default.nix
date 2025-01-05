@@ -1,16 +1,18 @@
 {
   pkgs,
   pkgs-stable,
+  mylib,
   ...
 }: {
-  imports = [
-    ../programs/tmux.nix
-    ../programs/zsh.nix
-    ../programs/starship.nix
-    ../programs/alacritty.nix
-    ../programs/git.nix
-    ../programs/shell.nix
-  ];
+  imports =
+    (mylib.scanPaths ./.)
+    ++ [
+      ../programs/tmux.nix
+      ../programs/zsh.nix
+      ../programs/alacritty.nix
+      ../programs/git.nix
+      ../programs/shell.nix
+    ];
 
   nixpkgs.config = {
     allowUnfree = true;
