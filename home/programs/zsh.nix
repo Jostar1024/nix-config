@@ -24,6 +24,7 @@
       l = "eza -lh";
       la = "eza -la";
       hms = "just -f ~/nix-config/justfile deploy-mac-home";
+      switch = "just -f ~/nix-config/justfile deploy-mac";
       tn = "tmux new-session -A -s";
       ta = "tmux attach -t";
       k = "kubectl";
