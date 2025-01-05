@@ -34,6 +34,7 @@
       "logi-options+"
       "raycast"
       "squirrel"
+      "syncthing"
       "tableplus"
       "visual-studio-code"
       "wechat"

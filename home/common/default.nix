@@ -101,7 +101,17 @@
       jetbrains-mono
       cascadia-code
       fira-code
-      (pkgs.nerdfonts.override {fonts = ["FiraCode" "CascadiaCode" "JetBrainsMono"];})
+      (pkgs.nerdfonts.override {
+        fonts = [
+          # symbols icon only
+          "NerdFontsSymbolsOnly"
+          # Characters
+          "FiraCode"
+          "CascadiaCode"
+          "JetBrainsMono"
+          "Iosevka"
+        ];
+      })
       lxgw-wenkai
     ]);
 }

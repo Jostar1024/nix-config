@@ -19,18 +19,6 @@
       KERL_INSTALL_MANPAGES = "yes";
       KERL_INSTALL_HTMLDOCS = "yes";
     };
-    shellAliases = {
-      ls = "eza";
-      l = "eza -lh";
-      la = "eza -la";
-      hms = "just -f ~/nix-config/justfile deploy-mac-home";
-      switch = "just -f ~/nix-config/justfile deploy-mac";
-      tn = "tmux new-session -A -s";
-      ta = "tmux attach -t";
-      k = "kubectl";
-      cat = "bat --style=plain --pager=never";
-      fonts = "fc-list | awk -F: '{print $2}' | sort | uniq";
-    };
     initExtra = ''
       # export LANG=en_US.UTF-8
       export PATH=$PATH:~/.config/emacs/bin
@@ -58,5 +46,20 @@
       enable = true;
       plugins = ["git" "sudo"];
     };
+  };
+
+  home.shellAliases = {
+    ls = "eza";
+    l = "eza -lh";
+    la = "eza -la";
+    hms = "just -f ~/nix-config/justfile deploy-mac-home";
+    switch = "just -f ~/nix-config/justfile deploy-mac";
+    tn = "tmux new-session -A -s";
+    ta = "tmux attach -t";
+    k = "kubectl";
+    cat = "bat --style=plain --pager=never";
+    fonts = "fc-list | awk -F: '{print $2}' | sort | uniq";
+    urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
+    urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
   };
 }

@@ -11,6 +11,7 @@
     darwin.iproute2mac
     raycast
     stats
+    logseq
 
     alist
 
