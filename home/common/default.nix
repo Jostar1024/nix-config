@@ -1,17 +1,15 @@
 {
-  config,
-  lib,
   pkgs,
   pkgs-stable,
   ...
 }: {
   imports = [
-    ./programs/tmux.nix
-    ./programs/zsh.nix
-    ./programs/starship.nix
-    ./programs/alacritty.nix
-    ./programs/git.nix
-    ./programs/shell.nix
+    ../programs/tmux.nix
+    ../programs/zsh.nix
+    ../programs/starship.nix
+    ../programs/alacritty.nix
+    ../programs/git.nix
+    ../programs/shell.nix
   ];
 
   nixpkgs.config = {
@@ -96,8 +94,7 @@
       alacritty
       syncthing
       keepassxc
-      zathura
-      sioyek
+      # sioyek
 
       # fonts
       jetbrains-mono

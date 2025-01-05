@@ -73,7 +73,7 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
           ./home/darwin.nix
-          ./home/common.nix
+          ./home/common
         ];
         extraSpecialArgs = {inherit pkgs-stable;};
       };

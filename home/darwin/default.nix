@@ -1,6 +1,6 @@
 {pkgs, mylib, ...}: {
 
-  imports = (mylib.scanPaths ./.) ++ [../common.nix];
+  imports = (mylib.scanPaths ./.) ++ [../common];
 
   home.username = "yucheng";
   home.homeDirectory = "/Users/yucheng";

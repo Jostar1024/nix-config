@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./fcitx5
-    ./common.nix
+    ./common
     ./programs/dropbox.nix
   ];
   home.username = "yucheng";
