@@ -81,7 +81,9 @@
     darwinConfigurations."set-theoretic-untyped" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       modules = [
-        ./modules/nix-core.nix
+        ./modules/darwin/nix-core.nix
+        ./modules/darwin/system.nix
+        ./modules/darwin/apps.nix
         ./hosts/darwin.nix
         home-manager.darwinModules.home-manager
         {
