@@ -84,6 +84,7 @@
         ./modules/darwin/nix-core.nix
         ./modules/darwin/system.nix
         ./modules/darwin/apps.nix
+        ./modules/darwin/homebrew-mirror.nix
         ./hosts/darwin.nix
         home-manager.darwinModules.home-manager
         {
