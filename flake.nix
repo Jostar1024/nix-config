@@ -3,18 +3,26 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    extra-substituters = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://cache.nixos.org/";
-    trusted-substituters = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store https://mirror.sjtu.edu.cn/nix-channels/store https://cache.nixos.org/";
+    extra-substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://cache.nixos.org/"
+    ];
+    trusted-substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://cache.nixos.org/"
+    ];
   };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # NOTE: how to use both stable & unstable
     # https://www.reddit.com/r/NixOS/comments/15zd11c/using_both_2305_unstable_in_homemanager/
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.11";
       # The `follows` keyword in inputs is used for inheritance.
       # Here, `inputs.nixpkgs` of home-manager is kept consistent with
       # the `inputs.nixpkgs` of the current flake,
@@ -28,7 +36,7 @@
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:lnl7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
   };
@@ -44,7 +52,7 @@
   } @ inputs: let
     inherit (inputs.nixpkgs) lib;
     mylib = import ./lib {inherit lib;};
-    # pkgs-stable-func = system: nixpkgs-stable.legacyPackages."${system}";
+    pkgs-stable-func = system: nixpkgs-stable.legacyPackages."${system}";
     pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
   in {
     nixosConfigurations = {
@@ -66,17 +74,16 @@
       };
     };
 
-    homeConfigurations."yuchengcao" = let
-      pkgs-stable = nixpkgs-stable.legacyPackages.aarch64-darwin;
-    in
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [
-          ./home/darwin.nix
-          ./home/common
-        ];
-        extraSpecialArgs = {inherit pkgs-stable;};
+    homeConfigurations."yuchengcao" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      modules = [
+        ./home/darwin.nix
+        ./home/common
+      ];
+      extraSpecialArgs = {
+        pkgs-stable = pkgs-stable-func "aarch64-darwin";
       };
+    };
 
     darwinConfigurations."set-theoretic-untyped" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
@@ -94,7 +101,7 @@
           home-manager.useUserPackages = true;
           home-manager.users.yucheng = import ./home/darwin;
           home-manager.extraSpecialArgs = {
-            inherit pkgs-stable;
+            pkgs-stable = pkgs-stable-func "aarch64-darwin";
             inherit mylib;
           };
         }

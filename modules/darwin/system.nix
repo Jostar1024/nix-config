@@ -19,8 +19,14 @@
 
         # customize Hot Corners
         # https://daiderd.com/nix-darwin/manual/index.html#opt-system.defaults.dock.wvous-bl-corner
-        wvous-tl-corner = 3; # Application Windows
+        wvous-tl-corner = 2;
         wvous-bl-corner = 11; # Launchpad
+        wvous-tr-corner = 1; # Disabled
+        wvous-br-corner = 1; # Disabled
+
+        # NOTE: for aerospace to expose the bigger application window.
+        # see: https://nikitabobko.github.io/AeroSpace/guide#a-note-on-mission-control
+        expose-group-apps = true;
       };
 
       finder = {
