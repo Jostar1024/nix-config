@@ -20,6 +20,7 @@
   };
 
   home.packages =
+    # NOTE: move sioyek to stable because of: https://github.com/NixOS/nixpkgs/issues/366069
     (with pkgs-stable; [emacs-lsp-booster elixir-ls])
     ++ (with pkgs; [
       # ai
@@ -51,8 +52,6 @@
       just
       android-tools
       graphviz
-      janet
-      jpm
 
       # programming
       alejandra
@@ -77,6 +76,10 @@
       haskellPackages.hoogle
       haskellPackages.cabal-install
       buf
+      clojure
+      janet
+      jpm
+      nodejs_23
 
       podman-compose
       # erlang deps
