@@ -52,6 +52,7 @@
       just
       android-tools
       graphviz
+      oils-for-unix
 
       # programming
       alejandra
@@ -80,6 +81,8 @@
       janet
       jpm
       nodejs_23
+      mermaid-cli
+      neovim
 
       podman-compose
       # erlang deps

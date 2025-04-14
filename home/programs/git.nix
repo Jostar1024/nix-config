@@ -1,4 +1,6 @@
-{...}: {
+{pkgs, ...}: {
+  home.packages = [pkgs.git-cliff];
+
   programs.git = {
     enable = true;
     ignores = [
