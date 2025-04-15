@@ -13,7 +13,7 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
-      general.import = ["${pkgs.alacritty-theme}/tokyo-night.toml"];
+      general.import = ["${pkgs.alacritty-theme}/tokyo_night.toml"];
       env = {
         TERM = "xterm-256color";
       };
@@ -22,7 +22,7 @@ in {
         padding.x = 14;
         padding.y = 14;
         decorations = decoration;
-        opacity = 0.97;
+        opacity = 0.95;
         dimensions = {
           lines = 80;
           columns = 200;

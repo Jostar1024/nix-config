@@ -70,7 +70,6 @@
       dockfmt
       shfmt
       nixfmt-classic
-      racket
       pandoc
       texliveFull
       haskellPackages.lsp
@@ -107,17 +106,11 @@
       jetbrains-mono
       cascadia-code
       fira-code
-      (pkgs.nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "CascadiaCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
+      nerd-fonts.symbols-only
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.iosevka
+
       lxgw-wenkai
     ]);
 }
