@@ -82,6 +82,7 @@
       ];
       extraSpecialArgs = {
         pkgs-stable = pkgs-stable-func "aarch64-darwin";
+        inherit mylib;
       };
     };
 
