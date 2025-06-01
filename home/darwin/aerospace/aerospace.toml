@@ -78,7 +78,7 @@ alt-shift-0 = 'move-node-to-workspace 10'
 
 alt-shift-c = 'reload-config'
 
-alt-r = 'mode resize'
+alt-shift-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'
