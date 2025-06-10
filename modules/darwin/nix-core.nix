@@ -22,8 +22,6 @@
     auto-optimise-store = false;
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
 
   # do garbage collection weekly to keep disk usage low
