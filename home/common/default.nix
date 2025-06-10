@@ -79,7 +79,7 @@
       clojure
       janet
       jpm
-      nodejs_23
+      nodejs_24
       mermaid-cli
       neovim
 
