@@ -1,14 +1,23 @@
-{pkgs, mylib, ...}: {
-
+{
+  pkgs,
+  mylib,
+  ...
+}: {
   imports = (mylib.scanPaths ./.) ++ [../common] ++ [../programs/ssh.nix];
 
   home.username = "yucheng";
   home.homeDirectory = "/Users/yucheng";
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
-    emacs
+    # https://github.com/djgoku/dot-files/pull/61/files
+    ((pkgs.emacs.override {}).overrideAttrs (old: {
+      NIX_CFLAGS_COMPILE =
+        (old.env.NIX_CFLAGS_COMPILE or "")
+        + pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin
+        " -DFD_SETSIZE=10000 -DDARWIN_UNLIMITED_SELECT";
+    }))
     iterm2
-    darwin.iproute2mac
+    iproute2mac
     raycast
     stats
 

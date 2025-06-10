@@ -8,9 +8,14 @@
   home.homeDirectory = "/Users/yuchengcao";
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
-    emacs
+    ((pkgs.emacs-macport.override {}).overrideAttrs (old: {
+      NIX_CFLAGS_COMPILE =
+        (old.env.NIX_CFLAGS_COMPILE or "")
+        + pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin
+        " -DFD_SETSIZE=10000 -DDARWIN_UNLIMITED_SELECT";
+    }))
     iterm2
-    darwin.iproute2mac
+    iproute2mac
     rectangle
     raycast
     stats
