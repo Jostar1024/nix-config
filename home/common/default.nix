@@ -82,6 +82,7 @@
       nodejs_24
       mermaid-cli
       neovim
+      next-ls
 
       podman-compose
       # erlang deps

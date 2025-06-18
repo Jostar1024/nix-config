@@ -8,7 +8,7 @@
   home.homeDirectory = "/Users/yuchengcao";
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
-    ((pkgs.emacs-macport.override {}).overrideAttrs (old: {
+    ((pkgs.emacs.override {}).overrideAttrs (old: {
       NIX_CFLAGS_COMPILE =
         (old.env.NIX_CFLAGS_COMPILE or "")
         + pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin
