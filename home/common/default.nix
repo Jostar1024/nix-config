@@ -25,6 +25,7 @@
     ++ (with pkgs; [
       # ai
       ollama
+      openai-whisper
 
       # utils
       stow

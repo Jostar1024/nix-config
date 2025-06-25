@@ -19,7 +19,7 @@
       KERL_INSTALL_MANPAGES = "yes";
       KERL_INSTALL_HTMLDOCS = "yes";
     };
-    initExtra = ''
+    initContent = ''
       # export LANG=en_US.UTF-8
       export PATH=$PATH:~/.config/emacs/bin
 
