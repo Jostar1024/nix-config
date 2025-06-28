@@ -103,6 +103,7 @@
       syncthing
       keepassxc
       # sioyek
+      localsend
 
       # fonts
       jetbrains-mono
