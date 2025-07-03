@@ -16,9 +16,17 @@ in {
     customPaneNavigationAndResize = true;
     terminal = "screen-256color";
     plugins = with pkgs.tmuxPlugins; [
-      sensible
       yank
-      catppuccin
+      {
+        plugin = catppuccin;
+        # config runs before the plugin
+        extraConfig = ''
+          set -g @catppuccin_directory_text "#{pane_current_path}"
+          # Configure the catppuccin plugin
+          set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_window_status_style "rounded"
+        '';
+      }
       tmux-thumbs
       fuzzback
     ];
@@ -50,19 +58,21 @@ in {
       set -g @catppuccin_window_middle_separator " █"
       set -g @catppuccin_window_number_position "right"
 
-      set -g @catppuccin_window_default_fill "number"
-      set -g @catppuccin_window_default_text "#W"
-
-      set -g @catppuccin_window_current_fill "number"
-      set -g @catppuccin_window_current_text "#W"
+      set -g @catppuccin_window_current_text " #W"
+      set -g @catppuccin_window_text "#W"
 
       set -g @catppuccin_status_modules_right "session"
       set -g @catppuccin_status_left_separator  " "
       set -g @catppuccin_status_right_separator ""
-      set -g @catppuccin_status_fill "icon"
       set -g @catppuccin_status_connect_separator "no"
 
-      set -g @catppuccin_directory_text "#{pane_current_path}"
+      # Make the status line more pleasant.
+      set -g status-left ""
+      set -g status-right '#[fg=#{@thm_crust},bg=#{@thm_teal}] session: #S '
+
+      # Ensure that everything on the right side of the status line
+      # is included.
+      set -g status-right-length 100
     '';
   };
 }
