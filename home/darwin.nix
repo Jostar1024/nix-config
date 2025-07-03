@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: {
+  imports = [./darwin/aerospace];
   home.username = "yuchengcao";
   home.homeDirectory = "/Users/yuchengcao";
   home.stateVersion = "23.11";
