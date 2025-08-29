@@ -31,9 +31,7 @@
       stow
       curl
       wget
-      neofetch
       bat
-      pgcli
       htop
       tree
       flyctl
@@ -83,7 +81,9 @@
       nodejs_24
       mermaid-cli
       neovim
-      next-ls
+      guile
+      autoconf
+      automake
 
       podman-compose
       # erlang deps

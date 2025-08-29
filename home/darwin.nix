@@ -21,7 +21,6 @@
     raycast
     stats
     # postgres
-    pgcli
     postgresql_16
     pgformatter
   ];

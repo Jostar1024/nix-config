@@ -24,7 +24,6 @@
     alist
 
     # postgres
-    pgcli
     postgresql_16
     pgformatter
   ];
