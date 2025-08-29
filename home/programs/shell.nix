@@ -2,7 +2,7 @@
   programs = {
     less = {
       enable = true;
-      keys = "
+      config = "
       h left-scroll
       l right-scroll
     ";

@@ -8,7 +8,13 @@
     enable = true;
     autosuggestion.enable = true;
     enableCompletion = true;
-    history.ignoreDups = true;
+    history = {
+      ignoreDups = true;
+      saveNoDups = true;
+      extended = false;
+      ignoreSpace = true;
+      ignorePatterns = ["rm *" "pkill *"];
+    };
     sessionVariables = {
       EDITOR = "emacs";
       LANG = "en_US.UTF-8";
@@ -40,7 +46,7 @@
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
 
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     autocd = true;
     oh-my-zsh = {
       enable = true;
