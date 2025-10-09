@@ -27,6 +27,7 @@
     };
     initContent = ''
       # export LANG=en_US.UTF-8
+      # for doom emacs commands
       export PATH=$PATH:~/.config/emacs/bin
 
       # -X leaves file contents on the screen when less exits.
@@ -38,7 +39,9 @@
 
       source ~/.zshrc
 
-      eval "$(starship init zsh)"
+      # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
+      # use this to ensure that zoxide init zsh runs after the compinit
+      eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
       . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
       . "${pkgs.asdf-vm}/share/bash-completion/completions/asdf.bash"
     '';

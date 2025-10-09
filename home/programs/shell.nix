@@ -21,7 +21,7 @@
 
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
+      # enableZshIntegration = true;
     };
 
     eza = {
