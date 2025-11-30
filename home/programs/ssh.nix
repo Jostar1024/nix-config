@@ -1,6 +1,21 @@
 {...}: {
   programs = {
     ssh = {
+      # programs.ssh.enableDefaultConfig is going to be deprecated
+      # copy the config to keep the previous behavior
+      matchBlocks."*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
+
       enable = true;
 
       extraConfig = ''

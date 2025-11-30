@@ -13,11 +13,11 @@ in {
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${pkgs.alacritty-theme}/share/alacritty-theme/tokyo_night.toml"];
+      general.import = ["${pkgs.alacritty-theme}/share/alacritty-theme/tokyo_night.toml"];
       env = {
         TERM = "xterm-256color";
       };
-      shell.program = "zsh";
+      terminal.shell.program = "zsh";
       # terminal = {shell.program = "zsh";};
       window = {
         padding.x = 14;

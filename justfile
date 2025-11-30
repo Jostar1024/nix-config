@@ -8,8 +8,10 @@ deploy:
 deploy-mac-home:
   home-manager switch --flake ~/nix-config
 
+# https://github.com/nix-darwin/nix-darwin/issues/1457
+# NOTE: nix-darwin has recently switched over to running the entire system activation process as root.
 deploy-mac:
-  darwin-rebuild switch --flake ~/nix-config
+  sudo darwin-rebuild switch --flake ~/nix-config
 
 ############################################################################
 #

@@ -21,8 +21,6 @@
     raycast
     stats
 
-    alist
-
     # postgres
     postgresql_16
     pgformatter

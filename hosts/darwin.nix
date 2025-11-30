@@ -9,6 +9,8 @@
   # system.configurationRevision = self.rev or self.dirtyRev or null;
 
   nixpkgs.config.allowUnfree = true;
+  # NOTE: for the sake of pgpem 1.24 error when using keepass
+  nixpkgs.config.allowBroken = true;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
