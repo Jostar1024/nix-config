@@ -15,6 +15,7 @@
         controlPath = "~/.ssh/master-%r@%n:%p";
         controlPersist = "no";
       };
+      enableDefaultConfig = false;
 
       enable = true;
 

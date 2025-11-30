@@ -14,17 +14,12 @@
       ../programs/shell.nix
     ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true;
-  };
-
   home.packages =
     # NOTE: move sioyek to stable because of: https://github.com/NixOS/nixpkgs/issues/366069
     (with pkgs-stable; [emacs-lsp-booster])
     ++ (with pkgs; [
       # ai
-      ollama
+      # ollama
       openai-whisper
 
       # utils
