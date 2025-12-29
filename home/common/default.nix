@@ -23,6 +23,7 @@
       openai-whisper
 
       # utils
+      gawk
       stow
       curl
       wget
@@ -110,5 +111,9 @@
       nerd-fonts.iosevka
 
       lxgw-wenkai
+
+      # for JP sentence mining.
+      mpv
+      ffmpeg
     ]);
 }
