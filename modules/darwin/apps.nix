@@ -24,6 +24,7 @@
       "tailscale"
       "unixodbc"
       "unzip"
+      "opencode"
     ];
 
     casks = [
