@@ -109,6 +109,7 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
+      noto-fonts-cjk-sans
 
       lxgw-wenkai
 

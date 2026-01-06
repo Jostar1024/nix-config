@@ -25,6 +25,7 @@
       "unixodbc"
       "unzip"
       "opencode"
+      "witr"
     ];
 
     casks = [
