@@ -35,6 +35,9 @@
           # export LANG=en_US.UTF-8
           # for doom emacs commands
           export PATH=$PATH:~/.config/emacs/bin
+          # NOTE: use homebrew ruby in zsh
+          export PATH=$PATH:$HOMEBREW_PREFIX/lib/ruby/gems/4.0.0/bin
+          export PATH=$PATH:/opt/homebrew/opt/ruby/bin
 
           # -X leaves file contents on the screen when less exits.
           # -F makes less quit if the entire output can be displayed on one screen.
