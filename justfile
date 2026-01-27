@@ -6,7 +6,8 @@ deploy:
   nixos-rebuild switch --use-remote-sudo --flake .
 
 deploy-mac-home:
-  home-manager switch --flake ~/nix-config
+  # home-manager switch --flake ~/nix-config
+  home-manager switch --flake ~/nix-config --option substituters https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store
 
 # https://github.com/nix-darwin/nix-darwin/issues/1457
 # NOTE: nix-darwin has recently switched over to running the entire system activation process as root.
