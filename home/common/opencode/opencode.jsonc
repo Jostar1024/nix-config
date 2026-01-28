@@ -15,5 +15,9 @@
         "Authorization": "Bearer {env:ZHIHU_CODING_PLAN_API_KEY}"
       }
     }
+  },
+  "keybinds": {
+    "input_submit": "super+enter",
+    "input_newline": "enter"
   }
 }
