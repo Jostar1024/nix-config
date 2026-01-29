@@ -50,6 +50,7 @@
       android-tools
       graphviz
       oils-for-unix
+      socat
 
       # programming
       alejandra
