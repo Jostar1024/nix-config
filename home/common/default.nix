@@ -73,7 +73,7 @@
       haskellPackages.hoogle
       haskellPackages.cabal-install
       buf
-      clojure
+      (clojure.override {jdk = pkgs.jdk25;})
       janet
       jpm
       nodejs_24
@@ -86,7 +86,7 @@
       podman-compose
       # erlang deps
       fop
-      jdk21
+      jdk25
       wxGTK32
       unixODBC
       openssl
