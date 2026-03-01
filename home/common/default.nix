@@ -77,6 +77,7 @@
       janet
       jpm
       nodejs_24
+      bun
       mermaid-cli
       neovim
       guile

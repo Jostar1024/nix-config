@@ -46,7 +46,8 @@
           export LESS="-SRXF"
           export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-          source ~/.zshrc
+          [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
+          [ -f "$HOME/.env" ] && source "$HOME/.env"
         '';
       zshLast = lib.mkOrder 1500 ''
         # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
