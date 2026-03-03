@@ -83,6 +83,8 @@
       guile
       autoconf
       automake
+      scrcpy
+      go-grip
 
       podman-compose
       # erlang deps

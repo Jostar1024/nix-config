@@ -48,6 +48,8 @@
 
           [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
           [ -f "$HOME/.env" ] && source "$HOME/.env"
+          
+          backup_mv() { mv -- "$1" "$(date +%Y%m%d_%H%M%S)_$1"; }
         '';
       zshLast = lib.mkOrder 1500 ''
         # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
