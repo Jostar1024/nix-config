@@ -78,6 +78,7 @@
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
         ./home/darwin
+        ./home/darwin/aerospace
         ({pkgs, ...}: {
           imports = [./home/common];
           home.username = "yuchengcao";
