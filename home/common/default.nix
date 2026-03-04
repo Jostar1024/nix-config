@@ -63,7 +63,6 @@
       nodePackages.prettier
       shellcheck
       rustup
-      rustc
       dockfmt
       shfmt
       nixfmt-classic

@@ -3,14 +3,11 @@
   mylib,
   ...
 }: {
-  imports = (mylib.scanPaths ./.) ++ [../common] ++ [../programs/ssh.nix];
-
-  home.username = "yucheng";
-  home.homeDirectory = "/Users/yucheng";
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
     # https://github.com/djgoku/dot-files/pull/61/files
     ((pkgs.emacs.override {}).overrideAttrs (old: {
+      configureFlags = (old.configureFlags or []) ++ ["--with-no-frame-refocus"];
       NIX_CFLAGS_COMPILE =
         (old.env.NIX_CFLAGS_COMPILE or "")
         + pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isDarwin

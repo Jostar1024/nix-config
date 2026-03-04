@@ -77,8 +77,12 @@
     homeConfigurations."yuchengcao" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [
-        ./home/darwin.nix
-        ./home/common
+        ./home/darwin
+        ({pkgs, ...}: {
+          imports = [./home/common];
+          home.username = "yuchengcao";
+          home.homeDirectory = "/Users/yuchengcao";
+        })
       ];
       extraSpecialArgs = {
         pkgs-stable = pkgs-stable-func "aarch64-darwin";
@@ -100,7 +104,17 @@
           users.users.yucheng.home = "/Users/yucheng";
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.yucheng = import ./home/darwin;
+          home-manager.users.yucheng = {
+            imports =
+              (mylib.scanPaths ./home/darwin)
+              ++ [
+                ./home/common
+                ./home/programs/ssh.nix
+                ./home/darwin
+              ];
+            home.username = "yucheng";
+            home.homeDirectory = "/Users/yucheng";
+          };
           home-manager.extraSpecialArgs = {
             pkgs-stable = pkgs-stable-func "aarch64-darwin";
             inherit mylib;
