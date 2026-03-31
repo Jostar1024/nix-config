@@ -27,7 +27,7 @@
     eza = {
       enable = true;
       git = true;
-      icons = "auto";
+      icons = "never";
       enableZshIntegration = true;
     };
 
