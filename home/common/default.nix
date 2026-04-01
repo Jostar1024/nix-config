@@ -84,6 +84,8 @@
       automake
       scrcpy
       go-grip
+      gdb
+      global
 
       podman-compose
       # erlang deps
