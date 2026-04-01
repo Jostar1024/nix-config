@@ -1,0 +1,5 @@
+window-padding-x = 10
+# window-decoration = none
+macos-titlebar-style = hidden
+theme = light-person
+keybind = cmd+enter=unbind
