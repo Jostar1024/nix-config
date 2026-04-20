@@ -20,7 +20,18 @@ outer.right      = 2
 
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
-alt-enter = '''exec-and-forget open -na alacritty'''
+# for ghostty, need to System Settings → Privacy & Security → Accessibility.
+alt-enter = '''exec-and-forget osascript -e '
+tell application "Ghostty"
+    if running then
+        activate
+        tell application "System Events" to keystroke "n" using command down
+    else
+        activate
+    end if
+end tell
+'
+'''
 
 # i3 wraps focus by default
 alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
