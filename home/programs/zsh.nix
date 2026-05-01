@@ -38,6 +38,8 @@
           # NOTE: use homebrew ruby in zsh
           export PATH=$PATH:$HOMEBREW_PREFIX/lib/ruby/gems/4.0.0/bin
           export PATH=$PATH:/opt/homebrew/opt/ruby/bin
+          # NOTE: dart related
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
 
           # -X leaves file contents on the screen when less exits.
           # -F makes less quit if the entire output can be displayed on one screen.
@@ -62,6 +64,12 @@
       lib.mkMerge [zshConfigEarlyInit zshConfig zshLast];
     profileExtra = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
+    envExtra = ''
+    # Emacs M-x compile use non-login, non-interactive shell, which only inlcudes .zshenv
+    # To use command from homebrew, have to add homebrew to path
+    # - NOTE ~/.zshenv (the only zsh config file sourced for non-login, non-interactive shells):
+    path+=('/opt/homebrew/bin' '/opt/homebrew/sbin')
     '';
 
     dotDir = "${config.xdg.configHome}/zsh";
