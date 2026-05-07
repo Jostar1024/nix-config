@@ -40,6 +40,7 @@
           export PATH=$PATH:/opt/homebrew/opt/ruby/bin
           # NOTE: dart related
           export PATH="$PATH":"$HOME/.pub-cache/bin"
+          export PATH=$PATH:~/.local/bin
 
           # -X leaves file contents on the screen when less exits.
           # -F makes less quit if the entire output can be displayed on one screen.
