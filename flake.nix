@@ -52,8 +52,7 @@
   } @ inputs: let
     inherit (inputs.nixpkgs) lib;
     mylib = import ./lib {inherit lib;};
-    pkgs-stable-func = system: nixpkgs-stable.legacyPackages."${system}";
-    pkgs-stable = nixpkgs-stable.legacyPackages.x86_64-linux;
+    pkgs-stable-func = system: import nixpkgs-stable {inherit system; config.allowUnfree = true;};
   in {
     nixosConfigurations = {
       blade-desktop = nixpkgs.lib.nixosSystem {
@@ -61,6 +60,7 @@
         modules = [
           ./hosts/blade-desktop
           ({pkgs, ...}: {
+            nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [linyinfeng.overlays.singleRepoNur];
           })
           home-manager.nixosModules.home-manager
@@ -68,14 +68,14 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.yucheng = import ./home;
-            home-manager.extraSpecialArgs = {inherit pkgs-stable;};
+            home-manager.extraSpecialArgs = {pkgs-stable = pkgs-stable-func "x86_64-linux";};
           }
         ];
       };
     };
 
     homeConfigurations."yuchengcao" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+      pkgs = import nixpkgs {system = "aarch64-darwin"; config.allowUnfree = true;};
       modules = [
         ./home/darwin
         ./home/darwin/aerospace

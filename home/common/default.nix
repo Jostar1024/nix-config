@@ -20,7 +20,7 @@
     ++ (with pkgs; [
       # ai
       # ollama
-      openai-whisper
+      # openai-whisper
 
       # utils
       gawk
@@ -57,18 +57,15 @@
       clj-kondo
       cljfmt
       stylelint
-      nodePackages.js-beautify
-      nodePackages.prettier
+      js-beautify
+      prettier
       shellcheck
       rustup
       dockfmt
       shfmt
-      nixfmt-classic
+      nixfmt
       pandoc
       texliveFull
-      haskellPackages.lsp
-      haskellPackages.hoogle
-      haskellPackages.cabal-install
       buf
       (clojure.override {jdk = pkgs.jdk25;})
       janet
@@ -84,13 +81,14 @@
       go-grip
       gdb
       global
+      devenv
 
       podman-compose
       # erlang deps
       fop
       jdk25
-      wxGTK32
-      unixODBC
+      wxwidgets_3_2
+      unixodbc
       openssl
 
       # libs

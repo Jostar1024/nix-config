@@ -39,8 +39,9 @@
           export PATH=$PATH:$HOMEBREW_PREFIX/lib/ruby/gems/4.0.0/bin
           export PATH=$PATH:/opt/homebrew/opt/ruby/bin
           # NOTE: dart related
-          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          export PATH=$PATH:"$HOME/.pub-cache/bin"
           export PATH=$PATH:~/.local/bin
+          export PATH=$PATH:$HOME/.asdf/shims
 
           # -X leaves file contents on the screen when less exits.
           # -F makes less quit if the entire output can be displayed on one screen.
@@ -48,6 +49,9 @@
           # -S disables line wrapping. Side-scroll to see long lines.
           export LESS="-SRXF"
           export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+          # append completions to fpath
+          fpath=(${pkgs.asdf-vm}/share/zsh/site-functions/ $fpath)
 
           [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
           [ -f "$HOME/.env" ] && source "$HOME/.env"
@@ -58,8 +62,6 @@
         # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
         # use this to ensure that zoxide init zsh runs after the compinit
         eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
-        . "${pkgs.asdf-vm}/share/asdf-vm/asdf.sh"
-        . "${pkgs.asdf-vm}/share/bash-completion/completions/asdf.bash"
       '';
     in
       lib.mkMerge [zshConfigEarlyInit zshConfig zshLast];
