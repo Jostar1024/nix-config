@@ -6,7 +6,7 @@
 }: let
   font = "FiraCode Nerd Font Mono";
   decoration =
-    if pkgs.lib.strings.hasSuffix "darwin" pkgs.system
+    if pkgs.lib.strings.hasSuffix "darwin" pkgs.stdenv.hostPlatform.system
     then "buttonless"
     else "none";
 in {

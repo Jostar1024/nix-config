@@ -5,7 +5,7 @@
   ...
 }: let
   thumbsCopy =
-    if pkgs.lib.strings.hasSuffix "darwin" pkgs.system
+    if pkgs.lib.strings.hasSuffix "darwin" pkgs.stdenv.hostPlatform.system
     then "set -g @thumbs-command 'echo -n {} | pbcopy'"
     else "";
 in {
