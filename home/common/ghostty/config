@@ -3,3 +3,4 @@ window-padding-x = 10
 macos-titlebar-style = hidden
 theme = light-person
 keybind = cmd+enter=unbind
+clipboard-paste-protection=false
