@@ -70,7 +70,6 @@
       (clojure.override {jdk = pkgs.jdk25;})
       janet
       jpm
-      nodejs_24
       bun
       mermaid-cli
       neovim
