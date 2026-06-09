@@ -4,10 +4,23 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [zsh-fzf-tab];
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
+    autosuggestion = {
+      enable = true;
+      strategy = ["history" "completion" "match_prev_cmd"];
+    };
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
+    completionInit = ''
+      autoload -U compinit
+      if [[ -n ${config.xdg.configHome}/zsh/.zcompdump(#qNmh-24) ]]; then
+        compinit -C -d ${config.xdg.configHome}/zsh/.zcompdump
+      else
+        compinit -d ${config.xdg.configHome}/zsh/.zcompdump
+      fi
+    '';
     history = {
       ignoreDups = true;
       saveNoDups = true;
@@ -48,17 +61,27 @@
           # -R displays ANSI color escape sequences in "raw" form.
           # -S disables line wrapping. Side-scroll to see long lines.
           export LESS="-SRXF"
-          export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+          # NOTE: from https://mijndertstuij.nl/posts/life-is-too-short-for-a-slow-terminal/
+          export NVM_DIR="$HOME/.nvm"
+          nvm() {
+            unset -f nvm
+            [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" --no-use
+            [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+            nvm "$@"
+          }
 
           # append completions to fpath
           fpath=(${pkgs.asdf-vm}/share/zsh/site-functions/ $fpath)
 
           [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
           [ -f "$HOME/.env" ] && source "$HOME/.env"
-          
+
           backup_mv() { mv -- "$1" "$(date +%Y%m%d_%H%M%S)_$1"; }
+
         '';
       zshLast = lib.mkOrder 1500 ''
+        source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
         # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
         # use this to ensure that zoxide init zsh runs after the compinit
         eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
@@ -69,18 +92,14 @@
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
     envExtra = ''
-    # Emacs M-x compile use non-login, non-interactive shell, which only inlcudes .zshenv
-    # To use command from homebrew, have to add homebrew to path
-    # - NOTE ~/.zshenv (the only zsh config file sourced for non-login, non-interactive shells):
-    path+=('/opt/homebrew/bin' '/opt/homebrew/sbin')
+      # Emacs M-x compile use non-login, non-interactive shell, which only inlcudes .zshenv
+      # To use command from homebrew, have to add homebrew to path
+      # - NOTE ~/.zshenv (the only zsh config file sourced for non-login, non-interactive shells):
+      path+=('/opt/homebrew/bin' '/opt/homebrew/sbin')
     '';
 
     dotDir = "${config.xdg.configHome}/zsh";
     autocd = true;
-    oh-my-zsh = {
-      enable = true;
-      plugins = ["git" "sudo" "nvm"];
-    };
   };
 
   home.shellAliases = {
