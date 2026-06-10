@@ -32,12 +32,9 @@
 
     linyinfeng.url = "github:linyinfeng/nur-packages";
 
-    # nix-darwin's config
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
-
     nix-darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -47,7 +44,6 @@
     nixpkgs-stable,
     home-manager,
     linyinfeng,
-    nixpkgs-darwin,
     nix-darwin,
   } @ inputs: let
     inherit (inputs.nixpkgs) lib;
