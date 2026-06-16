@@ -55,6 +55,7 @@
           export PATH=$PATH:"$HOME/.pub-cache/bin"
           export PATH=$PATH:~/.local/bin
           export PATH=$PATH:$HOME/.asdf/shims
+          export PATH=$PATH:$HOME/.cargo/bin
 
           # -X leaves file contents on the screen when less exits.
           # -F makes less quit if the entire output can be displayed on one screen.
