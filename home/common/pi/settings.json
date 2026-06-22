@@ -1,6 +1,5 @@
 {
-  "lastChangelogVersion": "0.64.0",
-  "defaultProvider": "zai",
-  "defaultModel": "GLM-5.1",
+  "defaultProvider": "zai-coding-cn",
+  "defaultModel": "glm-5.1",
   "theme": "light"
 }
