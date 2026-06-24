@@ -19,7 +19,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # NOTE: how to use both stable & unstable
     # https://www.reddit.com/r/NixOS/comments/15zd11c/using_both_2305_unstable_in_homemanager/
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
