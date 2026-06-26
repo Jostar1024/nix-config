@@ -68,6 +68,7 @@
       texliveFull
       buf
       (clojure.override {jdk = pkgs.jdk25;})
+      babashka
       janet
       jpm
       bun
