@@ -1,6 +1,7 @@
 window-padding-x = 10
 # window-decoration = none
 macos-titlebar-style = hidden
+macos-option-as-alt = left
 theme = light-person
 keybind = cmd+enter=unbind
 clipboard-paste-protection=false
