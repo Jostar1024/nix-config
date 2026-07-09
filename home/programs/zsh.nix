@@ -75,6 +75,23 @@
           # append completions to fpath
           fpath=(${pkgs.asdf-vm}/share/zsh/site-functions/ $fpath)
 
+          # Show process using a port
+          port() {
+            lsof -i :"$1"
+          }
+          # Get PID using a port
+          pidport() {
+            lsof -ti :"$1"
+          }
+          # Gracefully kill process on a port
+          killport() {
+            kill $(lsof -ti :"$1")
+          }
+          # Force kill process on a port
+          killport9() {
+            kill -9 $(lsof -ti :"$1")
+          }
+
           [ -f "$HOME/.zshrc" ] && source "$HOME/.zshrc"
           [ -f "$HOME/.env" ] && source "$HOME/.env"
 
@@ -116,5 +133,7 @@
     fonts = "fc-list | awk -F: '{print $2}' | sort | uniq";
     urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
     urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+    # works on MacOS
+    ports = "lsof -i -P -n | grep LISTEN";
   };
 }
