@@ -40,6 +40,7 @@
           sort_dir_first = true;
         };
       };
+      shellWrapperName = "yy";
     };
     skim = {
       enable = true;
