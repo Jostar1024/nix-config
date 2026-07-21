@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [vim home-manager];
+  environment.systemPackages = with pkgs; [
+    vim
+    home-manager
+  ];
   homebrew = {
     enable = true;
     onActivation = {
@@ -44,9 +48,8 @@
       "snipaste"
       "squirrel-app"
       "syncthing-app"
-      "tableplus"
-      "visual-studio-code"
       "wechat"
+      "man-db"
     ];
   };
 }
