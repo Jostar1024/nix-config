@@ -60,6 +60,21 @@ in {
       # https://www.reddit.com/r/tmux/comments/sv6skh/clickable_urls/
       bind-key i run-shell -b "tmux capture-pane -J -p | grep -oE '(https?):\/\/.*[^>]' | sort -ui | fzf-tmux -p '80%' --reverse --prompt \"URL> \" | xargs open"
 
+      # prompt navigation in copy-mode-vi (requires OSC 133 marks)
+      bind-key -T copy-mode-vi s send-keys -X previous-prompt
+      bind-key -T copy-mode-vi S send-keys -X next-prompt
+
+      # Select previous command output (prefix + y)
+      bind-key y \
+        copy-mode \; \
+        send-keys -X previous-prompt -o \; \
+        send-keys -X begin-selection \; \
+        send-keys -X next-prompt \; \
+        send-keys -X cursor-up \; \
+        send-keys -X end-of-line \; \
+        send-keys -X copy-pipe-and-cancel "pbcopy" \; \
+        display-message "previous command output copied"
+
       # this is to solve the warning from pi-coding-agent.
       set -g extended-keys on
       # seems that csi-u is the newest protocol, I'll try it until sth is breaked.

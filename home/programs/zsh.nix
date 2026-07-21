@@ -103,6 +103,43 @@
         # NOTE: this requires the compinit, which is configured in oh-my-zsh's script
         # use this to ensure that zoxide init zsh runs after the compinit
         eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+
+        # OSC 133 - Semantic Prompt Shell Integration
+        #
+        # Marks terminal regions so Ghostty/tmux can jump between prompts:
+        #   A = start of prompt, B = end of prompt (start of input)
+        #   C = start of command output, D = end of command output
+        #
+        # Starship integration:
+        #   Starship rewrites PROMPT on every precmd via prompt_starship_precmd.
+        #   A and B marks must be embedded IN the PROMPT string (not printf'd separately)
+        #   because starship's multi-line prompt rendering displaces standalone marks.
+        #   _osc133_set_prompt_marks runs AFTER starship in precmd_functions to wrap
+        #   the final PROMPT with A (prepend) and B (append).
+        #
+        # Hook ordering (precmd_functions):
+        #   1. _osc133_precmd        - emit D mark (end of previous output)
+        #   2. prompt_starship_precmd - starship sets PROMPT
+        #   3. _osc133_set_prompt_marks - wrap PROMPT with A and B marks
+        #
+        _osc133_executing=""
+        function _osc133_precmd() {
+          local ret=$?
+          if [[ -n "$_osc133_executing" ]]; then
+            printf '\e]133;D;%d\a' "$ret"
+          fi
+          _osc133_executing=""
+        }
+        function _osc133_preexec() {
+          printf '\e]133;C\a'
+          _osc133_executing=1
+        }
+        function _osc133_set_prompt_marks() {
+          PROMPT="%{$(printf '\e]133;A\a')%}$PROMPT%{$(printf '\e]133;B\a')%}"
+        }
+        precmd_functions=(_osc133_precmd "''${precmd_functions[@]}")
+        precmd_functions+=(_osc133_set_prompt_marks)
+        preexec_functions+=(_osc133_preexec)
       '';
     in
       lib.mkMerge [zshConfigEarlyInit zshConfig zshLast];
