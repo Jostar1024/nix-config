@@ -29,8 +29,9 @@
       "tailscale"
       "unixodbc"
       "unzip"
-      "opencode"
+      "pi-coding-agent"
       "witr"
+      "man-db"
     ];
 
     casks = [
@@ -49,7 +50,6 @@
       "squirrel-app"
       "syncthing-app"
       "wechat"
-      "man-db"
     ];
   };
 }
