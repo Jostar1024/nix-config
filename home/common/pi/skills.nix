@@ -1,30 +1,42 @@
 {pkgs, ...}: let
-  # Fetch the entire repo into the nix store
+  # --- mattpocock/skills (pinned to commit) ---
   mattpocock-skills = pkgs.fetchFromGitHub {
     owner = "mattpocock";
     repo = "skills";
-    rev = "b843cb5ea74b1fe5e58a0fc23cddef9e66076fb8"; # pin to a commit hash for reproducibility
-    hash = "sha256-qOhU5bBnT6kI8c7i0r0IyecrgLJNNPlmQtAb6qWM73Q=";
+    rev = "ed37663cc5fbef691ddfecd080dff42f7e7e350d";
+    hash = "sha256-o/H9s3t6ahBqFwpkOMBOTwpsvb33pgvpI9n0PA+uLYM=";
   };
 
-  # Pick the skills you want
   engineeringSkills = [
-    "diagnose"
+    "code-review"
+    "codebase-design"
+    "diagnosing-bugs"
     "grill-with-docs"
-    "triage"
-    "improve-codebase-architecture"
-    "setup-matt-pocock-skills"
+    "implement"
+    "prototype"
+    "research"
+    "resolving-merge-conflicts"
     "tdd"
-    "to-issues"
-    "to-prd"
-    "zoom-out"
+    "to-spec"
+    "to-tickets"
+    "triage"
+    "wayfinder"
   ];
 
-  # Link each to ~/.agents/skills/<name>/
-  mkSkill = name: {
+  mkMattSkill = name: {
     name = ".agents/skills/${name}";
     value.source = "${mattpocock-skills}/skills/engineering/${name}";
   };
+
+  # --- Personal skills (stored in this repo) ---
+  personalSkills = ["elixir-developer"];
+
+  mkPersonalSkill = name: {
+    name = ".claude/skills/${name}";
+    value.source = ./skills/${name};
+  };
 in {
-  home.file = builtins.listToAttrs (map mkSkill engineeringSkills);
+  home.file =
+    builtins.listToAttrs (map mkMattSkill engineeringSkills)
+    // builtins.listToAttrs (map mkPersonalSkill personalSkills);
 }

@@ -1,5 +1,8 @@
 {
   ...
 }: {
-  imports = [./skills.nix];
+  imports = [
+    ./skills.nix
+    ./extensions.nix
+  ];
 }
