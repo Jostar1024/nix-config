@@ -43,7 +43,14 @@ in {
           set -g @catppuccin_directory_text "[#{s|#{HOME}|~|:pane_current_path}]"
         '';
       }
-      fingers
+      {
+        plugin = fingers;
+        extraConfig = ''
+          set -g @fingers-key Space
+          set -g @fingers-jump-key J
+          set -g @fingers-show-copied-notification 1
+        '';
+      }
       fuzzback
     ];
 
@@ -80,8 +87,6 @@ in {
       set -g @fuzzback-hide-preview 1
       set -g @fuzzback-popup-size '90%'
 
-      set -g @fingers-key Space
-
       # remain in copy mode
       set -g @yank_action 'copy-pipe'
       set -g @yank_with_mouse on
@@ -93,6 +98,7 @@ in {
       set -g status-right-length 100
       set -g status-right "#{E:@catppuccin_status_directory}"
       set -ag status-right "#{E:@catppuccin_status_session}"
+
     '';
   };
 }
