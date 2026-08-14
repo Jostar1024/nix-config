@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: let
-  thumbsCopy =
-    if pkgs.lib.strings.hasSuffix "darwin" pkgs.stdenv.hostPlatform.system
-    then "set -g @thumbs-command 'echo -n {} | pbcopy'"
-    else "";
   catppuccinTmux = pkgs.tmuxPlugins.catppuccin.overrideAttrs (old: {
     version = "2.3.0";
     src = pkgs.fetchFromGitHub {
@@ -47,7 +43,7 @@ in {
           set -g @catppuccin_directory_text "[#{s|#{HOME}|~|:pane_current_path}]"
         '';
       }
-      tmux-thumbs
+      fingers
       fuzzback
     ];
 
@@ -84,7 +80,7 @@ in {
       set -g @fuzzback-hide-preview 1
       set -g @fuzzback-popup-size '90%'
 
-      ${thumbsCopy}
+      set -g @fingers-key Space
 
       # remain in copy mode
       set -g @yank_action 'copy-pipe'
