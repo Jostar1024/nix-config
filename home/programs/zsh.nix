@@ -45,6 +45,8 @@
         lib.mkOrder
         1000
         ''
+          # NOTE: prefix space to a command you don't want to store in history
+          setopt hist_ignore_space
           # export LANG=en_US.UTF-8
           # for doom emacs commands
           export PATH=$PATH:~/.config/emacs/bin
