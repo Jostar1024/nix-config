@@ -32,7 +32,7 @@
   personalSkills = ["elixir-developer"];
 
   mkPersonalSkill = name: {
-    name = ".claude/skills/${name}";
+    name = ".agents/skills/${name}";
     value.source = ./skills/${name};
   };
 in {
