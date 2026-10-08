@@ -1,6 +1,6 @@
 ## Communication
 - Use the user's language to response.
-- If you are writing English when writing markdown, Pull request descriptions, PR commit messages, ensure that the content conforms to ASD-STD100.
+- If you are writing English when writing markdown, Pull request descriptions, PR commit messages, ensure that the content conforms to ASD-STE100.
 - Use clear, concise, and plain language.
 - Do not use corporate buzzwords, complex terminology, or unnecessary acronyms.
 - Write short sentences and favor an active, conversational voice

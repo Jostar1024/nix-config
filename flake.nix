@@ -75,6 +75,7 @@
       modules = [
         ./home/darwin
         ./home/darwin/aerospace
+        ./home/karabiner
         ({pkgs, ...}: {
           imports = [./home/common];
           home.username = "yuchengcao";
