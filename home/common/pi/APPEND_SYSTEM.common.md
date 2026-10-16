@@ -14,6 +14,7 @@
 - For an existing pushed branch or open PR, never rebase or rewrite history. Check out the feature branch, fast-forward it from its remote branch, merge the latest origin/master into it, resolve conflicts, validate, and push normally. Never merge the old remote feature branch into a rebased copy. Never force-push.
 - ALWAYS RUN `git pull` from the remote branch before changing the file.
 - NEVER force push if you found the conflict, ask the user what to do.
+- For shell tasks, prefer codemode first. Use it to call `tools.bash` and return the relevant output. If codemode fails, cannot access a needed tool, or its output is insufficient, fall back to direct bash. Do not use direct bash when codemode has already returned enough information.
 
 <!-- design -->
 - Deliberately choosing the smallest, quickest implementation that makes the feature work, while leaving some generality, polish, or robustness for later.
